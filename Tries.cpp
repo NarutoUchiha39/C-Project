@@ -25,9 +25,11 @@ class Tries
         {
             this->PhoneBook["Anirudha"] = 9820042597;
             this->PhoneBook["Adam"] = 9820042590;
-            this->PhoneBook["Chutiya"] = 9999999999;
+            this->PhoneBook["Natasha"] = 9999999999;
             this->PhoneBook["Naruto"] = 9820042599;
             this->PhoneBook["Adom"] = 0;
+            this->PhoneBook["Kratos"] = 9820045666;
+            this->PhoneBook["Kabir"] = 9820034567;
         }
     public:
         void insert(string word,long long int number)
@@ -179,6 +181,76 @@ int main()
     {
         obj->insert(i.first,i.second);
     }
+    
+    cout<<"\nPress 1 to insert names into Phone Book\nPress 2 to view all names in Phone Book\nPress 3 to search for a name\nPress 4 to search for names begining with a particular sequence";
+    cout<<"\nPress 5 to perform a regex search\nPress 6 to exit\n";
+    while (true)
+    {
+        int choice;
+        cout<<"Enter choice: ";
+        cin>>choice;
+        int flag;
+        string name;
+        string seq;
+        bool val;
+        cout<<"\n";
+        switch (choice)
+        {
+        case 1:
+            cout<<"Enter Name to inserted: ";
+            
+            cin>>name;
+            cout<<"Enter Number: ";
+            long long number;
+            cin>>number;
+            obj->insert(name,number);
+            cout<<"\n";
+            break;
+        case 2:
+            obj->display_all_Names("",obj->root);
+            break;
+        case 3:
+            cout<<"Enter name to be searched for: ";
+            cin>>name;
+            obj->search(name);
+            cout<<"\n";
+            break;
+        case 4:
+            cout<<"Enter begining sequence for a name to be searched for: ";
+            cin>>seq;
+            obj->start_with_search(seq);
+            cout<<"\n";
+            break;
+        case 5:
+            cout<<"Enter name with . where any character can be matched: ";
+            cin>>name;
+            val=obj->regex_search(0,name,obj->root);
+            if(val==true)
+            {
+                cout<<"The name exists in the Phone Book";
+            }
+            else
+            {
+                cout<<"The name doesnt exist in the Phone Book";
+            }
+            cout<<"\n";
+            break;
+        case 6:
+            flag=1;
+            break;
+
+        default:
+            cout<<"Please enter a valid choice";
+            cout<<"\n";
+            break;
+        }
+        if(flag==1)
+        {
+            break;
+        }
+    }
+
+    
     
     
 }
