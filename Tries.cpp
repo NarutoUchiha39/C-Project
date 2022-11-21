@@ -164,8 +164,6 @@ class Tries
                 return true;
             }
             else{return false;};
-
-
         }
 };
 
@@ -198,7 +196,6 @@ int main()
         {
         case 1:
             cout<<"Enter Name to inserted: ";
-            
             cin>>name;
             cout<<"Enter Number: ";
             long long number;
