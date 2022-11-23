@@ -1,6 +1,7 @@
 #include<iostream>
 #include<unordered_map>
 #include <string>
+#include <fstream>
 using namespace std;
 
 struct TrieNode
@@ -23,13 +24,20 @@ class Tries
     public:
         void new_PhoneBook()
         {
-            this->PhoneBook["Anirudha"] = 9820042597;
-            this->PhoneBook["Adam"] = 9820042590;
-            this->PhoneBook["Natasha"] = 9999999999;
-            this->PhoneBook["Naruto"] = 9820042599;
-            this->PhoneBook["Adom"] = 0;
-            this->PhoneBook["Kratos"] = 9820045666;
-            this->PhoneBook["Kabir"] = 9820034567;
+            ifstream fin;
+            fin.open("phone-list.csv");
+            string line;
+            string name;
+            string number;
+            while (getline(fin, line)) 
+            {
+                getline ( fin, name, ',' );
+                getline ( fin, number, ',' );
+                this->PhoneBook[name]=stoll(number);
+            }
+        
+            fin.close();
+            
         }
     public:
         void insert(string word,long long int number)
