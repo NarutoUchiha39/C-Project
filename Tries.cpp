@@ -3,7 +3,7 @@
 #include <string>
 #include <fstream>
 using namespace std;
-
+ofstream fout;
 struct TrieNode
 {
     unordered_map<char, TrieNode*> children;
@@ -42,8 +42,9 @@ class Tries
     public:
         void insert(string word,long long int number)
         {
-
+            
             this->PhoneBook[word] = number;
+          
             TrieNode*dummy = this->root;
             for(auto var : word)
             {
@@ -109,7 +110,7 @@ class Tries
             if(root->word_end==true)
             {
                 cout<<"Name: "<<name<<"\n";
-                cout<<"Phone Number: "<<this->PhoneBook[name];
+                cout<<"Phone Number: \n"<<this->PhoneBook[name];
                 cout<<"\n\n";
             }
 
